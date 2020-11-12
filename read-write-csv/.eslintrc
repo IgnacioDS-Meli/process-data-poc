@@ -1,0 +1,31 @@
+{
+  "extends": ["bragi", "plugin:testing-library/recommended", "plugin:jest-dom/recommended"],
+  "plugins": ["testing-library", "jest-dom"],
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "react-hooks/exhaustive-deps": "off",
+        "max-len": "off",
+        "react/jsx-curly-newline": "off",
+        "react/no-unused-prop-types": "off",
+        "nordic/i18n-jsx-no-literals": "off",
+        "camelcase": "off",
+        "operator-linebreak": ["warn", "after"],
+        "jsx-a11y/anchor-is-valid": "off",
+        "jsx-a11y/click-events-have-key-events": "off"
+      }
+    },
+    {
+      "files": ["*.spec.js"],
+      "rules": {
+        "react-hooks/exhaustive-deps": "off",
+        "max-len": "off",
+        "react/no-unused-prop-types": "off",
+        "nordic/i18n-jsx-no-literals": "off",
+        "camelcase": "off",
+        "no-undef": "off"
+      }
+    }
+  ]
+}
