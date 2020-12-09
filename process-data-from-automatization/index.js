@@ -35,6 +35,7 @@ const csvWriter = createCsvWriter({
     ]});
 
 const filename = 'cases.csv';
+
 const data = [];
 const results = [];
 let count = 0;
@@ -59,10 +60,12 @@ const processCSV = () => {
 };
 
 const fetchPredictions = async () => {
-    await Promise.all(data.map(async (elem, idx) => {
+    await Promise.all(data.map(async (elem, idx,arr) => {
+        
 
         try {
             const resp = await axios.post(urlAutomatization, elem, { headers: headers });
+            console.log('Ejecutando lotes: ' + idx + " / " + arr.length)
             const { case: { 
                 caseId,
                 creationDate,
@@ -128,7 +131,6 @@ const fetchPredictions = async () => {
     })).then(() => {
         let data = JSON.stringify(results);
         console.log('Registros procesados:' + results.length)
-        //fs.writeFileSync('cases.json', data);
         csvWriter
             .writeRecords(results)
             .then(() => console.log('The CSV file was written successfully'));
